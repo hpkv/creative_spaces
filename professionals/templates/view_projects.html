@@ -1,0 +1,64 @@
+{% extends 'admin_master.html' %}
+
+
+{% block title %}
+Creative Spaces | View Projects
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="/static/bootstrap/bootstrap.min.css">
+{% endblock %}
+
+{% block content %}
+
+<div class="main-content">
+    <div class="container-fluid content-top-gap">
+
+        <section class="template-cards">
+            <!-- forms -->
+            <div class="card card_border py-2 mb-4">
+            <div class="cards__heading">
+                    <p class="text-center font-weight-bold h1 text-primary">View Projects<span></span></p>
+                </div>
+                <form method="get">
+                    <div class="form-group col-md-12 row ml-1 mt-3">
+                    <select class="custom-select input-style col-md-10 form-group" name="category" required>
+                        <option value=""></option>
+                        {% if categories %}
+                                {% for val in categories %}
+                                    <option value="{{ val.c_id }}">{{ val.c_name }}</option>
+                                {% endfor %}
+                                {% endif %}
+                            </select>
+                        <div class="form-group text-center col-md-2">
+                                <input type="submit" value="    Filter    " class="btn btn-primary btn-style">
+                            </div>
+                </div>
+                </form>
+                <div class="row row-cols-1 row-cols-md-3 m-1">
+{% for i in projects %}
+  <div class="col mb-4">
+    <div class="card h-100">
+      <img src="/media/{{ i.photo }}" class="card-img-top" alt="..." height="300" width="300">
+      <div class="card-body">
+          <h5 class="card-title text-center">{{ i.p_name }}</h5>
+          <p class="card-text text-justify">{{ i.description }}</p>
+      </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item text-center">Category - {{ i.category.c_name }}</li>
+        </ul>
+        <div class="card-body text-center">
+            <a href="{% url 'professionals:update_project' pk=i.p_id %}" class="card-link btn btn-info">Update</a>
+            <a href="{% url 'professionals:delete_project' pk=i.p_id %}" class="card-link btn btn-dark">Delete</a>
+        </div>
+    </div>
+  </div>
+{% endfor %}
+</div>
+            </div>
+        </section>
+
+    </div>
+</div>
+
+{% endblock %}

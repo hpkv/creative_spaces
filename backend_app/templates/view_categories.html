@@ -1,0 +1,48 @@
+{% extends 'admin_master.html' %}
+
+
+{% block title %}Creative Spaces | View Categories{% endblock %}
+
+
+{% block content %}
+
+<div class="main-content">
+    <div class="container-fluid content-top-gap">
+
+        <section class="forms">
+            <!-- forms -->
+            <div class="card card_border py-2 mb-4">
+                <div class="cards__heading">
+                    <p class="text-center font-weight-bold h1 text-primary">Categories<span></span></p>
+                </div>
+
+              <table class="table table-sm offset-sm-1 col-sm-10 table-bordered">
+                <thead>
+                <tr>
+                  <th scope="col">Category ID</th>
+                  <th scope="col">Category Name</th>
+                  <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                  {% if categories %}
+                    {% for i in categories %}
+                      <tr>
+                        <td>{{ i.c_id }}</td>
+                        <td>{{ i.c_name }}</td>
+                        <td>
+                          <a href="{% url 'backend:update_category' pk=i.c_id %}" class="btn btn-info">update</a>
+                          <a href="{% url 'backend:delete_category' pk=i.c_id %}" class="btn btn-dark">delete</a>
+                        </td>
+                      </tr>
+                    {% endfor %}
+                  {% endif %}
+                </tbody>
+              </table>
+
+            </div>
+        </section>
+    </div>
+</div>
+
+{% endblock %}

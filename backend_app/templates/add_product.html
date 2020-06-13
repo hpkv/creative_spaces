@@ -1,0 +1,87 @@
+{% extends 'admin_master.html' %}
+
+
+{% block title %}
+Creative Spaces | Add Product
+{% endblock %}
+
+
+{% block content %}
+
+<!-- main content start -->
+<div class="main-content">
+
+    <div class="container-fluid content-top-gap">
+
+            <div class="card card_border py-2 mb-4">
+                <div class="cards__heading">
+                    <p class="text-center font-weight-bold h1 text-primary">Add Product<span></span></p>
+                </div>
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label class="input__label">Select Category</label>
+                            <select class="custom-select input-style" name="cat" required>
+                                {% if categories %}
+                                {% for val in categories %}
+                                    <option value="{{ val.c_id }}">{{ val.c_name }}</option>
+                                {% endfor %}
+                                {% endif %}
+                            </select>
+                            </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4" class="input__label">Product Name</label>
+                                <input type="text" name="p_name" class="form-control input-style" id="inputEmail4"
+                                    placeholder="Name" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4" class="input__label">Price</label>
+                                <input type="number" name="price" class="form-control input-style" id="inputPassword4"
+                                    placeholder="Amount" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label class="input__label">Description</label>
+                                <textarea class="form-control input-style" name="description" placeholder="Enter description of product here" required></textarea>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label class="input__label">Quantity</label>
+                                <input type="number" name="quantity" class="form-control input-style"
+                                    placeholder="Quantity">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label class="input__label">Cover Photo</label>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" name="cover_photo" required>
+                                    <label class="custom-file-label">Choose file...</label>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label class="input__label">Photo</label>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" name="photo" required>
+                                    <label class="custom-file-label">Choose file...</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                        <button type="submit" class="btn btn-primary btn-style mt-4">Add Product</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+            <!-- //forms 2 -->
+
+            </div>
+    <!-- //content -->
+
+</div>
+<!-- main content end-->
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'master.html' %}
+
+{% block title %}
+Creative Spaces | Payment Processing
+{% endblock %}
+
+{% block content %}
+
+<!-- loading-gif Js -->
+ <script src="/static/admin_panel/js/modernizr.js"></script>
+ <script>
+     $(window).load(function () {
+         // Animate loader off screen
+         $(".se-pre-con").fadeOut("slow");;
+     });
+ </script>
+ <!--// loading-gif Js -->
+
+<div class="gallery pt-5 mt-2">
+		<div class="container pt-xl-5 pt-lg-3">
+			<h3 class="title-w3 mb-sm-5 mb-4 text-dark text-center font-weight-bold"> Process Payment</h3>
+            <div class="row col-md-12">
+                <div class="col-md-6 align-self-left mt-4">
+<!--                    <p class="title-para text-dark mx-auto font-weight-bold" style="font-size: 20px">Invoice number : ####</p>-->
+                    <p class="title-para text-dark mx-auto font-weight-bold" style="font-size: 20px">Name : {{ address_dict.name }}</p>
+                    <p class="title-para text-dark mx-auto font-weight-bold" style="font-size: 20px">Email ID : {{ address_dict.email }}</p>
+                    <p class="title-para text-dark mx-auto font-weight-bold" style="font-size: 20px">Contact no. : {{ address_dict.mobile }}</p>
+                    <p class="title-para text-dark mx-auto font-weight-bold mt-2" style="font-size: 20px">Billing Address : {{ address_dict.address }}</p>
+                </div>
+                <div class="col-md-6 align-self-right mt-4">
+                    <p class="title-para text-dark text-center mx-auto font-weight-bold" style="font-size: 20px">Cart Total</p>
+                    <p class="text-center mx-auto mt-1" style="font-size: 40px; color: #8e43e7">Rs. {{ total }}/-</p>
+                </div>
+            </div>
+        </div>
+    <div class="text-center mt-5">
+        {{ form.render }}
+    </div>
+    </div>
+
+{% endblock %}

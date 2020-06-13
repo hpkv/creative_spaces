@@ -1,0 +1,144 @@
+{% extends 'master.html' %}
+
+{% block title %}
+Creative Spaces
+{% endblock %}
+
+{% block content %}
+
+<!-- banner -->
+	<div class="main-w3pvt">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-6 style-banner">
+					<h1 class="text-dark font-weight-bold">We Design <span>Beautiful</span> Interiors & Make Your Spaces Look Awesome </h1>
+					<p class="mt-5">A proud community of professional interior designers...<br>Click on the below button to know more about us.</p>
+					<a href="/about_us/" class="btn button-style mt-sm-5 mt-4">Read More</a>
+				</div>
+				<div class="col-lg-6 banner-img">                <!-- -->
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //banner -->
+
+	<!-- about bottom -->
+	<div class="blog-w3ls py-5 bg-light border-bottom" id="what">
+		<div class="container py-xl-5 py-lg-3">
+			<h3 class="title-w3 mb-sm-5 mb-4 text-dark text-center font-weight-bold">Categories</h3>
+			<div class="row package-grids">
+				{% for category in categories %}
+				<div class="col-md-4 blog-w3 my-3">
+					<div class="blogs-top">
+						<img src="/media/{{ category.image }}" alt="" width="350" height="300" />
+					</div>
+					<div class="blogs-bottom p-4 bg-white">
+						<h4 class="text-dark font-weight-bold mb-3 text-center">{{ category.c_name }}</h4>
+					</div>
+				</div>
+				{% endfor %}
+
+	<!-- services -->
+	<section class="banner-bottom-w3layouts py-5" id="services">
+		<div class="container py-xl-5 py-lg-3">
+			<h3 class="title-w3 mb-sm-5 mb-4 text-dark text-center font-weight-bold">Our Products</h3>
+
+			<div class="row package-grids">
+				{% for i in products %}
+				<div class="col-md-4 blog-w3 my-3">
+					<div class="blogs-top">
+						<img src="/media/{{ i.cover_photo }}" alt="" width="350" height="300" />
+					</div>
+					<div class="blogs-bottom p-4 bg-white">
+						<h5 class="text-dark font-weight-bold mb-3 text-center">{{ i.p_name }}</h5>
+									<ul class="list-group list-group-flush">
+            <li class="list-group-item text-center">{{ i.category.c_name }} Decor</li>
+        </ul>
+					</div>
+
+				</div>
+				{% endfor %}
+			</div>
+			<!--<div class="row row-cols-1 row-cols-md-3 m-1">-->
+<!--{% for i in products %}-->
+<!--  <div class="col mb-4">-->
+<!--    <div class="card h-100">-->
+<!--      <img src="/media/{{ i.cover_photo }}" class="card-img-top" alt="..." height="250" width="250">-->
+<!--      <div class="card-body">-->
+<!--          <h5 class="card-title text-center">{{ i.p_name }}</h5>-->
+<!--          <p class="card-text text-justify">{{ i.description }}</p>-->
+<!--      </div>-->
+<!--        <ul class="list-group list-group-flush">-->
+<!--            <li class="list-group-item text-center text-info h4">Price - {{ i.price }}/-</li>-->
+<!--            <li class="list-group-item text-center">Category - {{ i.category.c_name }}</li>-->
+<!--        </ul>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--{% endfor %}-->
+<!--</div>-->
+			<div class="text-center">
+				<a href="/products/" class="btn button-style mt-sm-5 mt-4">See More</a>
+			</div>
+
+		</div>
+	</section>
+	<!-- //services -->
+
+	<!-- ways -->
+				<div class="col-sm-12">
+	<div class="join-w3l1 py-5">
+		<div class="container py-xl-5 py-lg-3">
+			<h3 class="title-w3 title-w3-3 mb-sm-5 mb-4 text-dark text-center font-weight-bold">We Do Great Design For Creative
+				Folks.</h3>
+			<div class="row join-agile2 text-center pt-md-5 pt-4">
+				<div class="col-md-3 steps-reach-w3l">
+					<span class="fa fa-check-square-o" aria-hidden="true"></span>
+					<p class="mt-3">Dream Design</p>
+					<div class="style-agile-border">
+						<img src="/static/images/sty1.png" alt="" />
+					</div>
+				</div>
+				<div class="col-md-3 steps-reach-w3l my-md-0 my-4">
+					<span class="fa fa-volume-control-phone" aria-hidden="true"></span>
+					<p class="mt-3">Contact Us</p>
+					<div class="style-agile-border second-border">
+						<img src="/static/images/sty2.png" alt="" />
+					</div>
+				</div>
+				<div class="col-md-3 steps-reach-w3l">
+					<span class="fa fa-calendar" aria-hidden="true"></span>
+					<p class="mt-3">Choose the Date</p>
+					<div class="style-agile-border">
+						<img src="/static/images/sty1.png" alt="" />
+					</div>
+				</div>
+				<div class="col-md-3 steps-reach-w3l mt-md-0 mt-4">
+					<span class="fa fa-smile-o" aria-hidden="true"></span>
+					<p class="mt-3">Design Ready</p>
+				</div>
+			</div>
+		</div>
+	</div>
+					</div>
+	<!-- //ways -->
+			</div>
+		</div>
+	</div>
+
+<div class="container py-xl-5 py-lg-3">
+			<h3 class="title-w3 mb-sm-5 mb-4 text-dark text-center font-weight-bold">Our Top Designers</h3>
+			<div class="row package-grids">
+				{% for professional in professionals %}
+				<div class="col-md-4 blog-w3 my-3">
+					<div class="blogs-top">
+						<img src="/media/{{ professional.image }}" alt="" class="img-fluid" height="300" width="300"/>
+					</div>
+					<div class="blogs-bottom p-4 bg-white">
+						<h4 class="text-dark font-weight-bold mb-3 text-center">{{ professional.first_name }} {{ professional.last_name }}</h4>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+</div>
+	{% endblock %}

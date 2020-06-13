@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+	<title>
+		{% block title %}{% endblock %}
+	</title>
+	<!-- Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8" />
+	<meta name="keywords" content="Inside Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+	<script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!-- //Meta tag Keywords -->
+
+	<!-- Custom-Files -->
+	<link rel="stylesheet" href="/static/css/bootstrap.css">
+	<!-- Bootstrap-Core-CSS -->
+	<link rel="stylesheet" href="/static/css/style.css" type="text/css" media="all" />
+	<!-- Style-CSS -->
+	<link rel="stylesheet" href="/static/css/font-awesome.css">
+	<!-- Font-Awesome-Icons-CSS -->
+	<!-- //Custom-Files -->
+
+	<!-- Web-Fonts -->
+	<link href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&amp;subset=latin-ext"
+	 rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
+	 rel="stylesheet">
+	<!-- //Web-Fonts -->
+</head>
+
+<body>
+	<!-- header -->
+	<header>
+		<!-- navigation -->
+		<div class="main-top py-1">
+			<nav class="navbar navbar-expand-lg navbar-light fixed-navi">
+				<div class="container-fluid">
+					<!-- logo -->
+					<a class="navbar-brand font-weight-bold" href="{% url 'backend:index' %}">
+						<i class="fa fa-ils mr-2" aria-hidden="true"></i>Creative Spaces
+					</a>
+					<!-- //logo -->
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
+						<ul class="navbar-nav ml-lg-auto">
+							<li class="nav-item active">
+								<a class="nav-link" href="{% url 'backend:index' %}">Home
+									<span class="sr-only">(current)</span>
+								</a>
+							</li>
+							<li class="nav-item mx-xl-5 mx-lg-3 my-lg-0 my-3">
+								<a class="nav-link" href="{% url 'backend:products' %}">Products</a>
+							</li>
+
+
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+								 aria-haspopup="true" aria-expanded="false">
+									Register
+								</a>
+								<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+									<a class="dropdown-item" href="/user/register/">User</a>
+									{% if not request.session.admin_exists %}
+									<a class="dropdown-item" href="{% url 'backend:admin_registration' %}">Admin</a>
+									{% endif %}
+									<a class="dropdown-item" href="/professional/registration/">Professional</a>
+								</div>
+							</li>
+
+
+							<li class="nav-item mx-xl-5 mx-lg-3 mt-lg-0 mt-3">
+								<a class="nav-link" href="{% url 'backend:portfolio' %}">Portfolio</a>
+							</li>
+
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown"
+								 aria-haspopup="true" aria-expanded="false">
+									More
+								</a>
+								<div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+									<a class="dropdown-item" href="{% url 'backend:about_us' %}">About Us</a>
+									<a class="dropdown-item" href="{% url 'users:ask_a_question' %}">Professionals</a>
+								</div>
+							</li>
+							<!--<li class="nav-item mt-lg-0 mt-3">
+								<a class="nav-link" href="">Contact Us</a>
+							</li>-->
+							<li class="search my-lg-0 my-4">
+								{% if request.session.role != 'professional' and request.session.role != 'admin' %}
+								<a href="/show_cart/">
+									<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+								</a>
+								{% endif %}
+<!--								<div id="small-dialog" class="mfp-hide">-->
+<!--									<div class="search-top">-->
+<!--										<div class="search-inn">-->
+<!--											<form action="#" method="post" class="disply-flex">-->
+<!--												<input class="form-control" type="search" name="search" placeholder="Type something..." required>-->
+<!--												<button class="btn2">-->
+<!--													<i class="fa fa-shopping-cart" aria-hidden="true"></i>-->
+<!--												</button>-->
+<!--											</form>-->
+<!--											<p class="text-white font-weight-bold mt-4">Creative Spaces</p>-->
+<!--										</div>-->
+<!--									</div>-->
+<!--								</div>-->
+							</li>
+							<li class="ml-lg-4 mb-lg-0 mb-4">
+								{% if not request.session.logged_in %}
+								<a href="{% url 'backend:login' %}" class="reqe-button">Login</a>
+								{% else %}
+								<a href="{% url 'backend:login' %}" class="reqe-button">Dashboard</a>
+								{% endif %}
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</div>
+		<!-- //navigation -->
+	</header>
+	<!-- //header -->
+
+	{% block content %} {% endblock %}
+
+<!-- footer -->
+	<footer>
+		<div class="w3ls-footer-grids py-4">
+			<div class="container py-xl-5 py-lg-3">
+				<div class="row">
+					<div class="col-lg-3 w3l-footer-logo text-center">
+						<!-- logo -->
+						<a class="navbar-brand font-weight-bold" href="index.html">
+							<i class="fa fa-ils mr-2" aria-hidden="true"></i>Creative Spaces
+						</a>
+						<!-- //logo -->
+					</div>
+					<!-- button -->
+					<div class="col-lg-5 w3l-footer text-lg-right text-center mt-3">
+						<ul class="list-unstyled footer-nav-wthree">
+							<li class="mr-4">
+								<a href="index.html" class="active">Home</a>
+							</li>
+							<li class="mr-4">
+								<a class="" href="about.html">About Us</a>
+							</li>
+							<li class="mr-4">
+								<a class="" href="gallery.html">Gallery</a>
+							</li>
+							<li>
+								<a class="" href="contact.html">Contact Us</a>
+							</li>
+						</ul>
+					</div>
+					<!-- //button -->
+					<!-- social icons -->
+					<div class="col-lg-4 w3social-icons text-lg-right text-center mt-lg-0 mt-3">
+						<ul>
+							<li>
+								<a href="#" class="rounded-circle">
+									<i class="fa fa-facebook-f"></i>
+								</a>
+							</li>
+							<li class="px-2">
+								<a href="#" class="rounded-circle">
+									<i class="fa fa-google-plus"></i>
+								</a>
+							</li>
+							<li>
+								<a href="#" class="rounded-circle">
+									<i class="fa fa-twitter"></i>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<!-- //social icons -->
+				</div>
+
+			</div>
+		</div>
+	</footer>
+	<!-- //footer -->
+
+	<!-- Js files -->
+	<!-- JavaScript -->
+	<script src="/static/js/jquery-2.2.3.min.js"></script>
+	<!-- Default-JavaScript-File -->
+	<script src="/static/js/bootstrap.js"></script>
+	<!-- Necessary-JavaScript-File-For-Bootstrap -->
+
+	<!-- fixed navigation -->
+	<script src="/static/js/fixed-nav.js"></script>
+	<!-- //fixed navigation -->
+	<!-- dropdown smooth -->
+	<script>
+		$(document).ready(function () {
+				$(".dropdown").hover(
+					function () {
+						$('.dropdown-menu', this).stop(false, false).slideDown("fast");
+						$(this).toggleClass('open');
+					},
+					function () {
+						$('.dropdown-menu', this).stop(true, true).slideUp("fast");
+						$(this).toggleClass('open');
+					}
+				);
+			});
+		</script>
+	<!-- //dropdown smooth -->
+
+	<!-- search plugin -->
+	<!-- pop-up-box -->
+	<link href="/static/css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
+	<script src="/static/js/jquery.magnific-popup.js"></script>
+	<!-- //pop-up-box -->
+	<!-- search script -->
+	<script>
+		$(document).ready(function () {
+			$('.popup-with-zoom-anim').magnificPopup({
+				type: 'inline',
+				fixedContentPos: false,
+				fixedBgPos: true,
+				overflowY: 'auto',
+				closeBtnInside: true,
+				preloader: false,
+				midClick: true,
+				removalDelay: 300,
+				mainClass: 'my-mfp-zoom-in'
+			});
+
+		});
+	</script>
+	<!-- //search script -->
+	<!-- //search plugin -->
+
+	<!-- smooth scrolling -->
+	<script src="/static/js/SmoothScroll.min.js"></script>
+	<!-- move-top -->
+	<script src="/static/js/move-top.js"></script>
+	<!-- easing -->
+	<script src="/static/js/easing.js"></script>
+	<!--  necessary snippets for few javascript files -->
+	<script src="/static/js/inside.js"></script>
+
+	<script src="/static/js/bootstrap.js"></script>
+	<!-- Necessary-JavaScript-File-For-Bootstrap -->
+	<!-- //Js files -->
+
+
+</body>
+
+</html>

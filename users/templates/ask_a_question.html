@@ -1,0 +1,52 @@
+{% extends 'master.html' %}
+
+{% block title %}
+Creative Spaces | Select Professional
+{% endblock %}
+
+{% block content %}
+<!-- banner -->
+	<div class="banner-w3ls-2">
+
+	</div>
+	<!-- //banner -->
+	<!-- page details -->
+	<div class="breadcrumb-agile">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item">
+				<a href="/">Home</a>
+			</li>
+			<li class="breadcrumb-item active" aria-current="page">Professionals</li>
+		</ol>
+	</div>
+	<!-- //page details -->
+
+	<!-- contact -->
+	<div class="gallery pt-5">
+		<div class="container pt-xl-5 pt-lg-3">
+			<h3 class="title-w3 mb-sm-5 mb-4 text-dark text-center font-weight-bold">Select Professional</h3>
+			<ul class="demo">
+				{% for prof in professionals %}
+				<li>
+					<div class="gallery-grid1">
+						<img src="/media/{{ prof.image }}" alt=" " width="300" height="300" />
+						<div class="p-mask">
+							<h5 class="text-white">{{ prof.first_name }} {{ prof.last_name }}</h5>
+							{% if not logged_in %}
+							<a href="/user/question/?id={{ prof.pk }}" class="btn btn-dark mt-2">Ask question</a>
+							{% elif request.session.role == "user" %}
+														<a href="/user/question/?id={{ prof.pk }}" class="btn btn-dark mt-2">Ask question</a>
+
+							{% endif %}
+							{% if request.user and request.session.role == "user" %}
+							<a href="/user/view_profile/?id={{ prof.pk }}" class="btn btn-dark mt-2">View Profile</a>
+							{% endif %}
+						</div>
+					</div>
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+	<!-- //gallery -->
+{% endblock %}
