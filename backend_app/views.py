@@ -531,6 +531,7 @@ def payment_successful(request):
                 f.total_price = i.total_price
                 f.image = i.image
                 f.u_email = request.user.email
+                f.invoice = invoice
                 f.save()
                 qty = ProductDetails.objects.get(pk=f.product).quantity
                 update = ProductDetails(pk=f.product, quantity=int(qty)-int(f.quantity))

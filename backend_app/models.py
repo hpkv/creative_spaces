@@ -65,6 +65,7 @@ class Sales(models.Model):
     total_price = models.BigIntegerField(null=True, blank=True, default=0)
     image = models.CharField(null=True, blank=True, default="", max_length=255)
     order_date = models.DateField(null=True, blank=True, auto_now_add=datetime.date.today())
+    invoice = models.BigIntegerField(default=0, null=True, blank=True)
 
 
 class InvoiceTable(models.Model):

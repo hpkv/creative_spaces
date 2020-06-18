@@ -30,7 +30,7 @@ class TemporaryCartForm(forms.ModelForm):
 class SalesForm(forms.ModelForm):
     class Meta:
         model = Sales
-        exclude = ['t_id', 'u_email', 'product', 'p_name', 'price', 'quantity', 'total_price', 'image']
+        exclude = ['t_id', 'u_email', 'product', 'p_name', 'price', 'quantity', 'total_price', 'image', 'order_date', 'invoice']
 
 
 class InvoiceTableForm(forms.ModelForm):
